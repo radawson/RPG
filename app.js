@@ -32,7 +32,6 @@ class Creature {
     this.xp = exp;
   }
 
-
   getHealth() {
     return this.health;
   }
@@ -125,13 +124,13 @@ const locations = [
 // * Monsters
 
 const caveMonsters = [
-  {
+  new Creature({
     name: 'Slime',
     health: 90,
     attack: 18,
     gold: 5,
     xp: 8
-  },
+  }),
   {
     name: 'Wolf',
     health: 100,
