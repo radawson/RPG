@@ -1,4 +1,42 @@
-import Weapon from './weapon.js';
+document.addEventListener("DOMContentLoaded", this.gameLoop());
+
+class Weapon {
+  constructor(name, damage) {
+    this.name = name;
+    this.damage = damage;
+  }
+
+  getDamage() {
+    return this.damage;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  setDamage(number) {
+    this.damage = number;
+  }
+
+  setName(string) {
+    this.name = string;
+  }
+}
+
+class Creature {
+  constructor(name, health, attack, gold, exp) {
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
+    this.gold = gold;
+    this.xp = exp;
+  }
+
+
+  getHealth() {
+    return this.health;
+  }
+}
 
 // Variables
 
@@ -25,9 +63,9 @@ const levelText = document.querySelector("#lvlText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
 
-const battleAxe = new Weapon();
-this.battleAxe.setName("Battle Axe");
-this.battleAxe.setDamage(18);
+const swordShield = new Weapon("Sword and Shield", 14);
+const battleAxe = new Weapon("Battle Axe", 18);
+
 
 // * Weapons
 
@@ -281,10 +319,10 @@ function poisonBlade() {
   return Math.floor(Math.random() * (2 - 20) + min);
 }*/
 
-function playerAttack(monster){
+function playerAttack(monster) {
   let attack = this.wield[0].getDamage() * (Math.floor(Math.random() * 10));
   monster.setHealth = monster.getHealth - attack;
-  if (monster.getHealth <= 0){
+  if (monster.getHealth <= 0) {
     text.innerText = "you killed the monster";
   } else {
     text.innerText = "You hit the monster for " + attack;
@@ -325,9 +363,9 @@ function renderWindow(step) {
       button3.innerText = 'Mace';
       text2.style.display = 'none';
       button1.onclick = wieldItem(swordShield);
-      button2.onclick = battleAxe;
+      button2.onclick = wieldItem(battleAxe);
       button3.onclick = oneHandMace;
-    } else if (charClass == "mage"){
+    } else if (charClass == "mage") {
 
     }
     text.innerText = "Choose you Class";
@@ -338,17 +376,36 @@ function renderWindow(step) {
     button2.onclick = charClass = "mage";
     button3.onclick = charClass = "rogue";
   }
+  return;
 }
 
 // Main Game loop
-let step = 1;
-while (true) {
-  renderWindow(step);
+function gameLoop() {
+  let step = 1;
+  while (true) {
+    renderWindow(step);
 
 
 
-  step++
-  if (step > 50) {
-    exit;
+    step++
+    if (step > 50) {
+      exit;
+    }
   }
+}
+
+function renderWindowe(step) {
+  //if (step == 1){}
+  switch (step) {
+    case 1:
+      //do stuff
+      break;
+
+    case 2:
+
+    case 3:
+
+
+  }
+  //break ends up here
 }
