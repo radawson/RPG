@@ -2,8 +2,13 @@
 
 let level = 1;
 let health = 100;
+let maxHealth = 150;
+let physicalDmg = 1;
+let maceDmg = 15;
+let swordnshieldDmg = 20;
+let battleAxeDmg = 25;
 let gold = 50;
-let investory = [];
+let inventory = [];
 
 // * Query Selectors 
 
@@ -21,19 +26,19 @@ const goldText = document.querySelector("#goldText");
 const weapons = [
   {
     name: "Sword and Shield",
-    power: 20
+    power: 14
   },
   {
     name: "Battle Axe",
-    power: 25
+    power: 18
   },
   {
     name: "Mace",
     power: 15
   },
   {
-    name: "Frost",
-    power: 20
+    name: "Frost Magic",
+    power: 17
   },
   {
     name: "Fire Magic",
@@ -41,7 +46,7 @@ const weapons = [
   },
   {
     name: "Dark Magic",
-    power: 23
+    power: 17
   },
   {
     name: "Dual Daggers",
@@ -49,7 +54,7 @@ const weapons = [
   },
   {
     name: "Short Bow",
-    power: 27
+    power: 18
   },
   {
     name: "Blade of Poison",
@@ -224,7 +229,7 @@ function darkMage() {
 // ------------------------------------------------->
 
 // * Rogue Class Functions
- 
+
 function rogueClass() {
   text.innerText = 'Select your starting weapon.';
   button1.innerText = 'Dual Daggers';
@@ -259,3 +264,23 @@ function poisonBlade() {
 }
 
 // ------------------------------------------------->
+
+// * Attack Function
+
+function playerAttack(2, 20) {
+  weapons[0].power = Math.ceil(2);
+  weapons[0].power = Math.floor(20);
+  return Math.floor(Math.random() * (2 - 20) + min);
+}
+
+// * Monster Attack Function
+
+function monsterAttack() {
+
+}
+
+// ------------------------------------------------->
+
+class Weapon {
+  // list out weapon and properties
+}

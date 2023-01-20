@@ -77,12 +77,12 @@ body {
 button {
 	font-family: "Cinzel", serif;
 	width: 35%;
-  margin: 10px;
+	margin: 10px;
 	height: 55px;
 	border-radius: 15px;
 	background: rgba(0, 0, 0, 0.3);
 	color: #fff;
 	/* text-transform: uppercase; */
-  font-size: .85rem;
+	font-size: .85rem;
 	text-align: center;
 }
