@@ -1,6 +1,9 @@
+import Weapon from './weapon.js';
+
 // Variables
 
 let level = 1;
+let charClass = "";
 let health = 100;
 let maxHealth = 150;
 let physicalDmg = 1;
@@ -9,6 +12,7 @@ let swordnshieldDmg = 20;
 let battleAxeDmg = 25;
 let gold = 50;
 let inventory = [];
+let wield = [];
 
 // * Query Selectors 
 
@@ -20,6 +24,10 @@ const text2 = document.querySelector("#text2");
 const levelText = document.querySelector("#lvlText");
 const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
+
+const battleAxe = new Weapon();
+this.battleAxe.setName("Battle Axe");
+this.battleAxe.setDamage(18);
 
 // * Weapons
 
@@ -236,7 +244,7 @@ function rogueClass() {
   button2.innerText = 'Short Bow';
   button3.innerText = 'Blade of Poison';
   text2.style.display = 'none';
-  button1.onclick = dualDaggers;
+  button1.onclick = addItem(dualDaggers);
   button2.onclick = shortBow;
   button3.onclick = poisonBlade;
 }
@@ -267,10 +275,21 @@ function poisonBlade() {
 
 // * Attack Function
 
-function playerAttack(2, 20) {
+/*function playerAttack(2, 20) {
   weapons[0].power = Math.ceil(2);
   weapons[0].power = Math.floor(20);
   return Math.floor(Math.random() * (2 - 20) + min);
+}*/
+
+function playerAttack(monster){
+  let attack = this.wield[0].getDamage() * (Math.floor(Math.random() * 10));
+  monster.setHealth = monster.getHealth - attack;
+  if (monster.getHealth <= 0){
+    text.innerText = "you killed the monster";
+  } else {
+    text.innerText = "You hit the monster for " + attack;
+    text.innerText = "Monster health is now " + monster.getHealth;
+  }
 }
 
 // * Monster Attack Function
@@ -281,6 +300,55 @@ function monsterAttack() {
 
 // ------------------------------------------------->
 
-class Weapon {
-  // list out weapon and properties
+function addItem(item) {
+  this.inventory.push(item);
+}
+
+function wieldItem(item) {
+  this.wield.push(item);
+}
+
+function renderWindow(step) {
+  if (step == 1) {
+    text.innerText = "Choose you Class";
+    button1.innerText = 'Warrior'
+    button2.innerText = 'Mage'
+    button3.innerText = 'Rogue'
+    button1.onclick = charClass = "warrior";
+    button2.onclick = charClass = "mage";
+    button3.onclick = charClass = "rogue";
+  } else if (step == 2) {
+    if (charClass == "warrior") {
+      text.innerText = 'Select your starting weapon.';
+      button1.innerText = 'Sword and Shield';
+      button2.innerText = 'Battle Axe';
+      button3.innerText = 'Mace';
+      text2.style.display = 'none';
+      button1.onclick = wieldItem(swordShield);
+      button2.onclick = battleAxe;
+      button3.onclick = oneHandMace;
+    } else if (charClass == "mage"){
+
+    }
+    text.innerText = "Choose you Class";
+    button1.innerText = 'Warrior'
+    button2.innerText = 'Mage'
+    button3.innerText = 'Rogue'
+    button1.onclick = charClass = "warrior";
+    button2.onclick = charClass = "mage";
+    button3.onclick = charClass = "rogue";
+  }
+}
+
+// Main Game loop
+let step = 1;
+while (true) {
+  renderWindow(step);
+
+
+
+  step++
+  if (step > 50) {
+    exit;
+  }
 }
