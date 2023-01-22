@@ -31,6 +31,11 @@ class Creature {
     this.gold = gold;
     this.xp = exp;
   }
+  
+  //so we can pass in our existing objects
+  constructor(obj) {
+    Object.assign(this, obj);
+  }
 
   getHealth() {
     return this.health;
